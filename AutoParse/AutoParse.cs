@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Reflection;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Remoting.Messaging;
 
 namespace AutoParse
 {
@@ -42,7 +36,7 @@ namespace AutoParse
             where T : struct
         {
             var parser = GetParser<T>();
-            return value.TryParseNullable<T>(parser);
+            return value.TryParseNullable(parser);
         }
 
         private static TryParser<T> GetParser<T>()

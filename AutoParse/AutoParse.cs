@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Reflection;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Messaging;
 
 namespace AutoParse
 {
@@ -25,6 +30,12 @@ namespace AutoParse
         {
             var parser = GetParser<T>();
             return value.TryParse(parser);
+        }
+
+        public static T TryParse<T>(this string value, T defaultValue)
+        {
+            var parsedValue = value.TryParse<T>();
+            return (EqualityComparer<T>.Default.Equals(parsedValue, default(T))) ? defaultValue : parsedValue;
         }
 
         public static T? TryParseNullable<T>(this string value)

@@ -22,11 +22,15 @@
 <p>In cases where you want to specify a default value when parsing fails then you can use:</p>
 <pre>
 	<code>
-		// "1.5".TryParse&lt;int&gt;() will return 0 by default.
-		// By providing a default parameter you can control the return value when parsing fails
-		var number = "1.5".TryParse&lt;int&gt;(10);
+		// The following line will return 0
+		var number = "1.5".TryParse&lt;int&gt;();
 		
-		// OR the simplified version
+		// Provide a default to control the return value when parsing fails
+		// The following line will return 10
+		var number = "1.5".TryParse&lt;int&gt;(10);		
+		
+		// simplified version
+		// The following line will return 10
 		var number = "1.5".TryParse(10);
 	</code>
 </pre>
